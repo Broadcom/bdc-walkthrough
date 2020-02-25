@@ -93,7 +93,7 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   }
 
   private _sync() {
-    if (this.popup.name) {
+    if (this.menu && this.popup.name) {
       if (this.enabled && !this.tutorialService.getTaskCompleted(this.popup.name) &&
         this.tutorialService.evalMustCompleted(this.mustCompleted) &&
         this.tutorialService.evalMustCompleted(this.popup.mustCompleted) &&
