@@ -1,0 +1,19 @@
+<h3>Conditional popup by expression evaluation</h3>
+<div>
+  This is useful when you guide the user to perform a task and then want the popup to disappear.
+</div>
+
+<div class="stepBar">
+  <mat-form-field appearance="standard">
+    <input [(ngModel)]="input" placeholder="Type hello here" matInput autocomplete="off" [bdcWalkTriggerFor]="example3Input" [enabled]="input !== 'hello'">
+  </mat-form-field>
+</div>
+
+<p *ngIf="input === 'hello'">
+  Now try to change the text again to make the popup re-appear.
+</p>
+
+<bdc-walk-popup #example3Input name="example3Input" header="Step 1" xPosition="after" [horizontal]="true" [mustCompleted]="{dialogWelcome: true}" [showCloseButton]="false">
+  Type <b>hello</b> to make this popup disappear.
+</bdc-walk-popup>
+

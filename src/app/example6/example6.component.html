@@ -1,0 +1,90 @@
+<h3>BdcWalkService APIs</h3>
+<div>
+  You can programmatically read and write the state of each task.<br>
+  In this example we read the completed tasks to display a task overview.
+</div>
+
+<h3>Debugging the walk-through tasks</h3>
+<div>
+  You can easily debug the state of the walk-through tasks with Chrome.<br>
+  Just right mouse click > Inspect > Application > Local Storage then you should see the key bdcWalkthrough.
+</div>
+
+<div class="stepBar">
+  <div [bdcWalkTriggerFor]="example6Continue">
+    <button (click)="toggleShowWalkthough(true)" mat-icon-button [bdcWalkTriggerFor]="example6Welcome">
+      <mat-icon>help_outline</mat-icon>
+    </button>
+  </div>
+
+  <button mat-stroked-button [bdcWalkTriggerFor]="example6Task1">Task 1</button>
+  <button mat-stroked-button [bdcWalkTriggerFor]="example6Task2">Task 2</button>
+  <button mat-stroked-button [bdcWalkTriggerFor]="example6Task3">Task 3</button>
+  <button mat-stroked-button [bdcWalkTriggerFor]="example6Task4">Task 4</button>
+  <button (click)="reset()" mat-stroked-button>Reset</button>
+</div>
+
+<div *ngIf="visible" class="taskManager">
+  <div class="title">
+    <mat-icon [inline]="true">flag</mat-icon>
+
+    <div style="flex: 1">
+      Task overview
+    </div>
+
+    <a (click)="toggleShowWalkthough(false)">
+      <mat-icon [inline]="true">close</mat-icon>
+    </a>
+  </div>
+
+  <div *ngFor="let task of tasks" class="task">
+    <mat-icon *ngIf="!task.done" [inline]="true">radio_button_unchecked</mat-icon>
+    <mat-icon *ngIf="task.done" [inline]="true" class="done">check</mat-icon>
+    {{ task.title }}
+  </div>
+</div>
+
+<bdc-walk-popup #example6Welcome name="example6Welcome" header="Welcome to MyApp" xPosition="after" [showButton]="true" buttonText="Let's start" [closeOnClick]="true" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example6showWalkthrough: true}">
+  To make your life easier we would like to show you a short tutorial.
+</bdc-walk-popup>
+
+<bdc-walk-popup #example6Continue name="example6Continue" header="Continue guide" xPosition="after" [mustCompleted]="{example6Welcome: true, example6showWalkthrough: false, example6Finish: false}" [closeOnClick]="true" [showButton]="true">
+  The walk-through is now paused.<br>
+  You can always get back to the guide just where you left by clicking the <b>help icon</b> above.
+</bdc-walk-popup>
+
+<bdc-walk-popup #example6Task1 name="example6Task1" header="Task 1" xPosition="after" [mustCompleted]="{example6showWalkthrough: true}" [closeOnClick]="true" [showCloseButton]="false">
+  Take a look at the <b>Task overview</b> to the bottom right corner of the page.<br><br>
+  Click the button to complete Task 1
+</bdc-walk-popup>
+
+<bdc-walk-popup #example6Task2 name="example6Task2" header="Task 2" xPosition="after" [mustCompleted]="{example6showWalkthrough: true, example6Task1: true}" [showCloseButton]="false" [closeOnClick]="true">
+  Now Task 1 is marked checked.<br>
+  Try <b>closing the Task overview</b> container to pause the walk-through.<br><br>
+  Afterwards, click the button to complete Task 2
+</bdc-walk-popup>
+
+<bdc-walk-popup #example6Task3 name="example6Task3" header="Task 3" xPosition="after" [mustCompleted]="{example6showWalkthrough: true, example6Task2: true}" [showCloseButton]="false" [closeOnClick]="true">
+  Try refreshing the page to see the walk-through state is preserved.<br><br>
+  Click the button to complete Task 3
+</bdc-walk-popup>
+
+<bdc-walk-popup #example6Task4 name="example6Task4" header="Task 4" xPosition="after" [mustCompleted]="{example6showWalkthrough: true, example6Task3: true}" [showCloseButton]="false" [closeOnClick]="true">
+  Click the button to complete Task 4
+</bdc-walk-popup>
+
+<bdc-walk-dialog #example6Finish name="example6Finish" width="400px" [mustCompleted]="{example6Task1: true, example6Task2: true, example6Task3: true, example6Task4: true}">
+  <h1>
+    <mat-icon [inline]="true">flag</mat-icon>
+    Finished!
+  </h1>
+
+  <p>
+    Hurray,<br>
+    You've successfully finished the tutorial.
+  </p>
+
+  <div class="buttons">
+    <button (click)="example6Finish.close({example6showWalkthrough: false})" mat-raised-button color="primary">Close</button>
+  </div>
+</bdc-walk-dialog>

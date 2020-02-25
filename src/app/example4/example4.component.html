@@ -1,0 +1,33 @@
+<h3>Conditional popup by comparing a value of a previously completed task</h3>
+<div>
+  This is useful for programmatically setting a value of entity ID to a task.<br>
+  For instance when you guide the user to create an entity and later you want to display a popup in the entity's row of a table.
+</div>
+
+<div class="stepBar">
+  <mat-form-field appearance="standard">
+    <input [(ngModel)]="input" placeholder="Type a number" matInput autocomplete="off" [bdcWalkTriggerFor]="example4Input" [enabled]="!isValid()">
+  </mat-form-field>
+
+  <button (click)="setTask()" [disabled]="!isValid()" mat-stroked-button [bdcWalkTriggerFor]="example4SetTask" [enabled]="isValid() && example4SetTask.getValue('example4Value') != input">Set Task</button>
+
+  <div>
+    Current task value: <b>{{ example4SetTask.getValue('example4Value') }}</b>
+  </div>
+</div>
+
+<p *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]" [bdcWalkTriggerFor]="example4List" [mustCompleted]="{example4Value: item}">
+  Item {{ item }}
+</p>
+
+<bdc-walk-popup #example4Input name="example4Input" header="Step 1" xPosition="after" [offsetY]="7" [mustCompleted]="{dialogWelcome: true}" [showCloseButton]="false">
+  Type a number between 1 to 10
+</bdc-walk-popup>
+
+<bdc-walk-popup #example4SetTask name="example4SetTask" header="Step 2" xPosition="after" [showCloseButton]="false">
+  Click <b>Set Task</b> to set the value {{input}} to the task.
+</bdc-walk-popup>
+
+<bdc-walk-popup #example4List name="example4List" header="Step 3" xPosition="after" [mustNotDisplaying]="['example4Input', 'example4SetTask']" [showCloseButton]="false">
+  The popup is only displayed for the selected number ({{example4List.getValue('example4Value')}}).
+</bdc-walk-popup>

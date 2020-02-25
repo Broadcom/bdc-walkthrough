@@ -1,0 +1,44 @@
+header {
+  width: 1024px;
+  margin: 10px auto;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav {
+  background-color: #213c60;;
+  color: white;
+
+  > div {
+    width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    > a {
+      display: block;
+      padding: 13px 15px 13px 0;
+      margin-right: 25px;
+      text-decoration: none !important;
+      color: white !important;
+      width: 80px;
+
+      &.active {
+        font-weight: bold;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid #F7BF19;
+      }
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+}
+
+main {
+  width: 1024px;
+  margin: 0 auto;
+  padding: 10px 0;
+}

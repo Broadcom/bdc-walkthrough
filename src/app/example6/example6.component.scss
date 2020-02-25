@@ -1,0 +1,54 @@
+.taskManager {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+  display: block;
+  background-color: #0293DB;;
+  color: white;
+  width: 220px;
+  border-radius: 10px;
+  padding: 12px 17px;
+  box-sizing: border-box;
+
+  .task {
+    display: flex;
+    align-items: center;
+    line-height: 2;
+
+    mat-icon {
+      width: 13px;
+      text-align: center;
+      margin-right: 6px;
+
+      &:not(.done) {
+        font-size: 10px;
+      }
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+
+    mat-icon {
+      margin-right: 6px;
+    }
+
+    a {
+      cursor: pointer;
+      font-size: 16px;
+      color: white !important;
+      text-decoration: none !important;
+      opacity: 0.7;
+    }
+  }
+}
+
+.stepBar > div {
+  padding: 0;
+}

@@ -1,0 +1,70 @@
+<header>
+  bdc-walkthrough
+</header>
+<nav>
+  <div>
+    <a routerLinkActive="active" routerLink="example1">Example 1</a>
+    <a routerLinkActive="active" routerLink="example2">Example 2</a>
+    <a routerLinkActive="active" routerLink="example3">Example 3</a>
+    <a routerLinkActive="active" routerLink="example4">Example 4</a>
+    <a routerLinkActive="active" routerLink="example5">Example 5</a>
+    <a routerLinkActive="active" routerLink="example6">Example 6</a>
+  </div>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<bdc-walk-dialog #dialogWelcome name="dialogWelcome" width="650px">
+  <h1>Welcome to bdc-walkthrough!</h1>
+
+  <mat-dialog-content>
+    <p>
+      The walk-through library is composed of these 3 parts:
+    </p>
+    <ol>
+      <li>
+        <b>BdcWalkService</b> - a service used to manage and store the completed tasks.
+        These are stored in the LocalStorage of the browser.<br>
+        Each task is either completed (true), uncompleted (false), or completed with a value.
+      </li>
+      <li>
+        <b>&lt;bdc-walk-popup&gt;</b> - a component used to display popups automatically when a set of tasks match the criteria.
+        Each popup has a unique name, which is used to identify its task.<br>
+        If the popup is closed by the user, its task is automatically marked as completed and it won't show up again.
+      </li>
+      <li>
+        <b>&lt;bdc-walk-dialog&gt;</b> (this dialog) - a component used to display dialogs automatically when a set of tasks match the criteria.
+      </li>
+    </ol>
+
+    <p>
+      Here is an example of a walk-through popup:
+    </p>
+
+<pre>
+&lt;bdc-walk-popup <b>#taskDeleteApp</b> name="taskDeleteApp"
+  [mustCompleted]="{{"{taskCreateApp: true}"}}"&gt;
+  Click the button to delete the App
+&lt;/bdc-walk-popup&gt;
+</pre>
+  <p>
+    It can then be attached to an element or a component using the hashtag reference:
+  </p>
+  <pre>
+&lt;button [bdcWalkTriggerFor]="<b>taskDeleteApp</b>" (click)="delete()"&gt;
+  Delete
+&lt;/button&gt;
+</pre>
+
+    <p>
+      We're now going to show you some example usages of the walk-through library.
+      Choose an example from the navigation bar to start.
+    </p>
+  </mat-dialog-content>
+
+  <div class="buttons">
+    <button (click)="dialogWelcome.close()" mat-raised-button color="primary">Let's start</button>
+  </div>
+</bdc-walk-dialog>

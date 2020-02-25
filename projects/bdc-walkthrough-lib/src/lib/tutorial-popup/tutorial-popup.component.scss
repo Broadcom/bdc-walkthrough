@@ -1,0 +1,195 @@
+$blue-fill: #0293DB;
+$light-border-color: #D5DAE0;
+$border-color: #E3E4E6;
+$container-border-radius: 10px;
+$background-color: #FFFFFF;
+
+// popup
+div.mat-menu-panel.bdc-walk-popup {
+  min-height: auto;
+  border: 1px solid $border-color;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+  overflow: visible;
+  min-width: 300px;
+  border-radius: $container-border-radius;
+
+  .container {
+    padding: 10px 18px 20px 18px;
+  }
+
+  .title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .header {
+      font-size: 18px;
+      font-weight: bold;
+      color: $blue-fill;
+    }
+
+    a {
+      font-size: 16px;
+      color: $light-border-color !important;
+      text-decoration: none !important;
+      margin-right: -4px;
+
+      img.close {
+        width: 16px;
+        content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDBWMHoiLz48cGF0aCBmaWxsPSIjRDVEQUUwIiBkPSJNMTkgNi40MUwxNy41OSA1IDEyIDEwLjU5IDYuNDEgNSA1IDYuNDEgMTAuNTkgMTIgNSAxNy41OSA2LjQxIDE5IDEyIDEzLjQxIDE3LjU5IDE5IDE5IDE3LjU5IDEzLjQxIDEyIDE5IDYuNDF6Ii8+PC9zdmc+');
+      }
+    }
+  }
+
+  .buttons {
+    margin-top: 12px;
+    margin-bottom: -5px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      color: $blue-fill;
+      line-height: 30px !important;
+    }
+  }
+
+  &.mat-menu-above {
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+  }
+
+  .mat-menu-content {
+    border-radius: $container-border-radius;
+    height: 100%;
+    padding: 0;
+    overflow-y: auto;
+  }
+
+  &.arrow {
+    position: relative;
+
+    &:after, &:before {
+      bottom: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-width: 8px;
+    }
+    &:before {
+      border-color: rgba(227, 228, 230, 0);
+      border-width: 9px;
+    }
+
+    &.mat-menu-before:not(.horizontal) {
+      &:after, &:before {
+        right: 10px;
+      }
+      &:after, &:before {
+        right: 20px;
+      }
+      &:before {
+        margin-right: -1px;
+      }
+    }
+
+    &.mat-menu-after:not(.horizontal) {
+      &:after, &:before {
+        left: 10px;
+      }
+      &:after, &:before {
+        left: 20px;
+      }
+      &:after {
+        margin-left: 1px;
+      }
+    }
+
+    &.mat-menu-below:not(.horizontal) {
+      margin-top: 10px;
+
+      &:after {
+        border-top-color: transparent;
+        border-bottom-color: $background-color;
+      }
+      &:before {
+        border-top-color: transparent;
+        border-bottom-color: $border-color;
+      }
+    }
+
+    &.mat-menu-above:not(.horizontal) {
+      margin-bottom: 10px;
+
+      &:after, &:before {
+        top: 100%;
+      }
+      &:after {
+        border-top-color: $background-color;
+        border-bottom-color: transparent;
+      }
+      &:before {
+        border-top-color: $border-color;
+        border-bottom-color: transparent;
+      }
+    }
+
+    // horizontal
+
+    &.mat-menu-before.horizontal {
+      margin-right: 15px;
+
+      &:after, &:before {
+        left: 100%;
+      }
+      &:after {
+        border-left-color: $background-color;
+        border-right-color: transparent;
+      }
+      &:before {
+        border-left-color: $border-color;
+        border-right-color: transparent;
+      }
+    }
+
+    &.mat-menu-after.horizontal {
+      margin-left: 15px;
+
+      &:after, &:before {
+        right: 100%;
+      }
+      &:after {
+        border-left-color: transparent;
+        border-right-color: $background-color;
+      }
+      &:before {
+        border-left-color: transparent;
+        border-right-color: $border-color;
+      }
+    }
+
+    &.mat-menu-below.horizontal {
+      &:after, &:before {
+        top: 20px;
+      }
+      &:after {
+        margin-top: 1px;
+      }
+    }
+
+    &.mat-menu-above.horizontal {
+      &:after, &:before {
+        bottom: 20px;
+      }
+      &:after {
+        margin-bottom: 1px;
+      }
+    }
+  }
+}

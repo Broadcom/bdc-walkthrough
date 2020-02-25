@@ -1,0 +1,39 @@
+<h3>Popup positioning</h3>
+<div>
+  You can position the popup before, after, above and below the element.
+</div>
+
+<div class="toggles">
+  <mat-checkbox [(ngModel)]="arrow">
+    Show arrow
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="horizontal">
+    Horizontal
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="alignCenter">
+    Align arrow to center
+  </mat-checkbox>
+</div>
+
+<div class="stepBar spread" [ngClass]="{cols: horizontal}" [style.margin-top]="horizontal ? 0 : '100px'">
+  <div [bdcWalkTriggerFor]="example5AfterBelow">After and Below</div>
+  <div [bdcWalkTriggerFor]="example5BeforeAbove">Before and Above</div>
+  <div [bdcWalkTriggerFor]="example5AfterAbove">After and Above</div>
+  <div [bdcWalkTriggerFor]="example5BeforeBelow">Before and Below</div>
+</div>
+
+<bdc-walk-popup #example5AfterBelow name="example5AfterBelow" header="Step 1" xPosition="after" yPosition="below" [horizontal]="horizontal" [alignCenter]="alignCenter" [arrow]="arrow" [showCloseButton]="false" [mustCompleted]="{dialogWelcome: true}">
+  The popup appears after and below
+</bdc-walk-popup>
+
+<bdc-walk-popup #example5BeforeAbove name="example5BeforeAbove" header="Step 2" xPosition="before" yPosition="above" [horizontal]="horizontal" [alignCenter]="alignCenter" [arrow]="arrow" [showCloseButton]="false" [mustCompleted]="{dialogWelcome: true}">
+  The popup appears before and above
+</bdc-walk-popup>
+
+<bdc-walk-popup #example5AfterAbove name="example5AfterAbove" header="Step 3" xPosition="after" yPosition="above" [horizontal]="horizontal" [alignCenter]="alignCenter" [arrow]="arrow" [showCloseButton]="false" [mustCompleted]="{dialogWelcome: true}">
+  The popup appears after and above
+</bdc-walk-popup>
+
+<bdc-walk-popup #example5BeforeBelow name="example5BeforeBelow" header="Step 4" xPosition="before" yPosition="below" [horizontal]="horizontal" [alignCenter]="alignCenter" [arrow]="arrow" [showCloseButton]="false" [mustCompleted]="{dialogWelcome: true}">
+  The popup appears before and below
+</bdc-walk-popup>

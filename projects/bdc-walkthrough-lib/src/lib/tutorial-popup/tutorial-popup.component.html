@@ -1,0 +1,21 @@
+<mat-menu [overlapTrigger]="false" [xPosition]="xPosition" [yPosition]="yPosition" [hasBackdrop]="false" [class]="_getClass()">
+  <div class="container" (click)="$event.stopPropagation()">
+    <div class="title">
+      <div class="header">{{ header }}</div>
+
+      <a *ngIf="showCloseButton" (click)="$event.preventDefault(); trigger.close(false)" target="_blank" href="">
+        <img class="close" />
+      </a>
+    </div>
+
+    <ng-content></ng-content>
+
+    <ng-container *ngIf="templateRef && trigger">
+      <ng-container *ngTemplateOutlet="templateRef; context: {$implicit: data}"></ng-container>
+    </ng-container>
+
+    <div *ngIf="showButton" class="buttons">
+      <button (click)="trigger.close(true)" type="button" mat-stroked-button>{{ buttonText }}</button>
+    </div>
+  </div>
+</mat-menu>

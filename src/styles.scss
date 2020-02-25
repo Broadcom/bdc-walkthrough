@@ -1,0 +1,105 @@
+// Angular Material
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  margin: 0;
+  background-color: white;
+  font-size: 14px;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+pre {
+  font-size: 13px;
+  font-family: 'Roboto Mono', monospace;
+  background: #f1f1f1;
+  padding: 3px;
+  display: block;
+  margin: 5px 0;
+}
+
+.toggles {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stepBar {
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 5px 30px;
+  margin-top: 30px;
+  min-height: 36px;
+
+  &.spread {
+    justify-content: space-around;
+  }
+
+  > div {
+    display: block;
+    padding: 2px 0;
+    margin: 0 10px;
+  }
+
+  > * {
+    margin-right: 20px !important;
+  }
+
+  &.cols {
+    flex-direction: column;
+
+    > div {
+      padding: 45px 30px;
+      margin: 15px;
+      border: 1px solid black;
+      border-radius: 8px;
+    }
+  }
+}
+
+
+.bdc-walk-popup {
+  // add custom styles to popups
+}
+
+.bdc-walk-dialog {
+  // add custom styles to dialogs
+
+  mat-dialog-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 35px 40px;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 0 0 25px 0;
+  }
+
+  .buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button.mat-raised-button {
+      &:not(:disabled) {
+        background-color: #0293DB;
+      }
+      min-width: 180px;
+      height: 40px;
+      font-weight: bold;
+    }
+
+    a {
+      color: #0293DB !important;
+      text-decoration: none !important;
+      margin-top: 15px;
+    }
+  }
+}

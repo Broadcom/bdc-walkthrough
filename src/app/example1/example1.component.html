@@ -1,0 +1,25 @@
+<h3>Sequential steps</h3>
+<div>
+  Useful for displaying popups one after another. Whenever you close a popup, the next popup will show up.<br>
+  Walk-through state is persistent and is kept between page refreshes. Click the Reset button to reset the state for this page.
+</div>
+
+<div class="stepBar">
+  <div [bdcWalkTriggerFor]="example1Step1">Step 1</div>
+  <div [bdcWalkTriggerFor]="example1Step2">Step 2</div>
+  <div [bdcWalkTriggerFor]="example1Step3">Step 3</div>
+
+  <button (click)="reset()" mat-stroked-button>Reset</button>
+</div>
+
+<bdc-walk-popup #example1Step1 name="example1Step1" header="Step 1" xPosition="after" [mustCompleted]="{dialogWelcome: true}">
+  Close this popup to display the next one.
+</bdc-walk-popup>
+
+<bdc-walk-popup #example1Step2 name="example1Step2" header="Step 2" xPosition="after" [mustCompleted]="{example1Step1: true}">
+  Close this popup to display the next one.
+</bdc-walk-popup>
+
+<bdc-walk-popup #example1Step3 name="example1Step3" header="Step 3" xPosition="after" [mustCompleted]="{example1Step2: true}">
+  This is the last popup.
+</bdc-walk-popup>
