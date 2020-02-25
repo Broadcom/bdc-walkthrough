@@ -3,6 +3,8 @@
 An Angular Material library for displaying walk-through pop-ups and
 dialogs using a declarative way.
 
+### [Show Demo](https://stackblitz.com/edit/angular-bdc-walkthrough)
+
 ![bdc-walkthrough](screenshot.png)
 
 ## Prerequisites
