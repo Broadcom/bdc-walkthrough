@@ -42,7 +42,7 @@ export class BdcWalkPopupComponent implements OnInit, OnChanges {
   @Output() closed = new EventEmitter<void>();
 
   @ViewChild(MatMenu, { static: true }) menu: MatMenu;
-  @ContentChild(TemplateRef, {static: false}) templateRef: TemplateRef<any>;
+  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
 
   trigger: BdcWalkTriggerDirective;
   data: any;
