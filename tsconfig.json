@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "bdc-walkthrough-lib": [
-        "dist/bdc-walkthrough-lib"
+      "bdc-walkthrough": [
+        "dist/bdc-walkthrough"
       ],
-      "bdc-walkthrough-lib/*": [
-        "dist/bdc-walkthrough-lib/*"
+      "bdc-walkthrough/*": [
+        "dist/bdc-walkthrough/*"
       ]
     }
   },

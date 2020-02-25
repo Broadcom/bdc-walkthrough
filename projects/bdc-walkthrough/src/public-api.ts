@@ -1,5 +1,5 @@
 /*
- * Public API Surface of bdc-walkthrough-lib
+ * Public API Surface of bdc-walkthrough
  */
 
 export * from './lib/bdc-walk.service';

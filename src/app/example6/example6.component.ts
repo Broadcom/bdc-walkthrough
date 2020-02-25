@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BdcWalkService} from 'bdc-walkthrough-lib';
+import {BdcWalkService} from 'bdc-walkthrough';
 import {Subscription} from 'rxjs';
 
 @Component({
