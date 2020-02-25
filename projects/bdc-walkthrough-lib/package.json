@@ -5,14 +5,14 @@
   "author": "Amir Leshem",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amirlpro/bdcWalkthrough.git"
+    "url": "https://github.com/Broadcom/bdc-walkthrough"
   },
   "bugs": {
-    "url": "https://github.com/amirlpro/bdcWalkthrough/issues"
+    "url": "https://github.com/Broadcom/bdc-walkthrough/issues"
   },
   "keywords": ["angular", "angular-material", "javascript", "walkthrough", "tutorial", "walk through", "popup"],
   "license": "MIT",
-  "homepage": "https://github.com/amirlpro/bdcWalkthrough",
+  "homepage": "https://github.com/Broadcom/bdc-walkthrough",
   "peerDependencies": {
     "@angular/common": ">=8.0.0 <10.0.0",
     "@angular/core": ">=8.0.0 <10.0.0",
