@@ -123,7 +123,7 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   }
 
   reposition() {
-    if (this._initialized) {
+    if (this._initialized && this._componentSubscription) {
       this.closeMenu();
       this.openMenu();
     }
