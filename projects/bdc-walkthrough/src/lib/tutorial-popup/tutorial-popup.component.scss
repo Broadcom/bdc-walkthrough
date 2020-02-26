@@ -15,6 +15,7 @@ div.mat-menu-panel.bdc-walk-popup {
 
   .container {
     padding: 10px 18px 20px 18px;
+    outline: none;
   }
 
   .title {
@@ -30,13 +31,12 @@ div.mat-menu-panel.bdc-walk-popup {
     }
 
     a {
-      font-size: 16px;
-      color: $light-border-color !important;
-      text-decoration: none !important;
       margin-right: -4px;
 
       img.close {
         width: 16px;
+        height: 16px;
+        display: block;
         content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDBWMHoiLz48cGF0aCBmaWxsPSIjRDVEQUUwIiBkPSJNMTkgNi40MUwxNy41OSA1IDEyIDEwLjU5IDYuNDEgNSA1IDYuNDEgMTAuNTkgMTIgNSAxNy41OSA2LjQxIDE5IDEyIDEzLjQxIDE3LjU5IDE5IDE5IDE3LjU5IDEzLjQxIDEyIDE5IDYuNDF6Ii8+PC9zdmc+');
       }
     }

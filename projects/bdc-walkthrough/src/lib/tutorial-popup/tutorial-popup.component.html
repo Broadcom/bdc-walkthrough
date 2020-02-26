@@ -1,10 +1,10 @@
 <mat-menu [overlapTrigger]="false" [xPosition]="xPosition" [yPosition]="yPosition" [hasBackdrop]="false" [class]="_getClass()">
-  <div class="container" (click)="$event.stopPropagation()">
+  <div class="container" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" tabindex="-1">
     <div class="title">
       <div class="header">{{ header }}</div>
 
-      <a *ngIf="showCloseButton" (click)="$event.preventDefault(); trigger.close(false)" target="_blank" href="">
-        <img class="close" />
+      <a *ngIf="showCloseButton" (click)="$event.preventDefault(); trigger.close(false)" href="">
+        <img class="close" alt="Close" />
       </a>
     </div>
 
