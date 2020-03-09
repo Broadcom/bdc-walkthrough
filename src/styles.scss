@@ -65,6 +65,9 @@ pre {
 
 .bdc-walk-popup {
   // add custom styles to popups
+  &.warning .header {
+    color: red !important;
+  }
 }
 
 .bdc-walk-dialog {

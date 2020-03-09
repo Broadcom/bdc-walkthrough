@@ -1,7 +1,7 @@
 import {
   Component,
   ContentChild,
-  EventEmitter,
+  EventEmitter, HostBinding,
   Input,
   OnChanges,
   OnInit,
@@ -31,6 +31,7 @@ export class BdcWalkPopupComponent implements OnInit, OnChanges {
   @Input() alignCenter: boolean | undefined; // by default only if size < 70 it will auto-align to center
   @Input() offsetX = 0;
   @Input() offsetY = 0;
+  @Input() class = '';
   @Input() showCloseButton = true;
   @Input() showButton = false;
   @Input() buttonText = 'Got it';
@@ -40,6 +41,7 @@ export class BdcWalkPopupComponent implements OnInit, OnChanges {
   @Input() onButtonCompleteTask: { [taskName: string]: any | boolean } = {};
   @Output() opened = new EventEmitter<void>();
   @Output() closed = new EventEmitter<void>();
+  @HostBinding('attr.class') className = undefined;
 
   @ViewChild(MatMenu, { static: true }) menu: MatMenu;
   @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
@@ -59,7 +61,7 @@ export class BdcWalkPopupComponent implements OnInit, OnChanges {
   }
 
   _getClass() {
-    return 'bdc-walk-popup' + (this.arrow ? ' arrow' : '') + (this.horizontal ? ' horizontal' : '');
+    return `bdc-walk-popup ${this.class} ` + (this.arrow ? ' arrow' : '') + (this.horizontal ? ' horizontal' : '');
   }
 
   getValue(taskName: string): any {

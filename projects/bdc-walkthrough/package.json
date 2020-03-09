@@ -1,6 +1,6 @@
 {
   "name": "bdc-walkthrough",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An Angular Material library for displaying walk-through pop-ups and dialogs using a declarative way",
   "author": "Amir Leshem",
   "repository": {

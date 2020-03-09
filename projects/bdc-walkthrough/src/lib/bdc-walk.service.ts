@@ -11,6 +11,7 @@ export class BdcWalkService {
   private _displaying: {[id: string]: boolean} = {};
   private _version = 1;
   private _key = 'bdcWalkthrough';
+  private _disabled = false;
 
   changes = this._notify.asObservable();
 
@@ -78,13 +79,18 @@ export class BdcWalkService {
     this.save();
   }
 
+  disableAll(disabled = true) {
+    this._disabled = disabled;
+    this._notify.next();
+  }
+
   private _isCompleteMatch(name: string, value: any) {
     const curValue = this.getTaskCompleted(name);
     return curValue === value || (value === true && curValue !== false) || (typeof(value) === 'object' && _.isMatch(curValue, value));
   }
 
   evalMustCompleted(mustCompleted: { [taskName: string]: any | boolean }) {
-    return Object.entries(mustCompleted).find(([name, value]) => !this._isCompleteMatch(name, value)) === undefined;
+    return !this._disabled && Object.entries(mustCompleted).find(([name, value]) => !this._isCompleteMatch(name, value)) === undefined;
   }
 
   evalMustNotDisplaying(mustNotDisplaying: string[]) {
