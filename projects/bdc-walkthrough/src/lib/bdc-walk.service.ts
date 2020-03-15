@@ -39,11 +39,11 @@ export class BdcWalkService {
     return this._values[id] || false;
   }
 
-  setTaskCompleted(id: string, data: any | boolean = true) {
-    if (this._values[id] !== data && data) {
-      this._values[id] = data;
+  setTaskCompleted(id: string, value: any | boolean = true) {
+    if (this._values[id] !== value && value) {
+      this._values[id] = value;
       this.save();
-    } else if (this._values.hasOwnProperty(id) && !data) {
+    } else if (this._values.hasOwnProperty(id) && !value) {
       delete this._values[id];
       this.save();
     }
@@ -85,8 +85,25 @@ export class BdcWalkService {
   }
 
   private _isCompleteMatch(name: string, value: any) {
-    const curValue = this.getTaskCompleted(name);
-    return curValue === value || (value === true && curValue !== false) || (typeof(value) === 'object' && _.isMatch(curValue, value));
+    const src = this.getTaskCompleted(name);
+    return this._isEqual(src, value) || (typeof(value) === 'object' && _.isMatch(src, value));
+  }
+
+  private _isEqual(src: any, value: any) {
+    if (src === value) {
+      return true;
+    } else if (src !== false && value === true) {
+      // we can compare value of true with any source
+      return true;
+    } else if (typeof(value) === 'string') {
+      // support not (!) less than (<) or greater than (>) comparisons
+      const op = value[0];
+      const compValue = value.substr(1);
+
+      if ((op === '!' && compValue != src) || (op === '<' && src < compValue) || (op === '>' && src > compValue)) {
+        return true;
+      }
+    }
   }
 
   evalMustCompleted(mustCompleted: { [taskName: string]: any | boolean }) {
