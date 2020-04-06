@@ -3,6 +3,7 @@ $light-border-color: #D5DAE0;
 $border-color: #E3E4E6;
 $container-border-radius: 10px;
 $background-color: #FFFFFF;
+$disabled-color: #B1BCC7;
 
 // popup
 div.mat-menu-panel.bdc-walk-popup {
@@ -14,7 +15,7 @@ div.mat-menu-panel.bdc-walk-popup {
   border-radius: $container-border-radius;
 
   .container {
-    padding: 10px 18px 20px 18px;
+    padding: 10px 18px 16px;
     outline: none;
   }
 
@@ -46,7 +47,13 @@ div.mat-menu-panel.bdc-walk-popup {
     margin-top: 12px;
     margin-bottom: -5px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+
+    .sideNote {
+      color: $disabled-color;
+      font-size: 12px;
+    }
 
     button {
       color: $blue-fill;

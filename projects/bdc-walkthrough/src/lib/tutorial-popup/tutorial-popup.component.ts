@@ -35,6 +35,7 @@ export class BdcWalkPopupComponent implements OnInit, OnChanges {
   @Input() showCloseButton = true;
   @Input() showButton = false;
   @Input() buttonText = 'Got it';
+  @Input() sideNoteText: string;
   @Input() mustCompleted: { [taskName: string]: any | boolean } = {};
   @Input() mustNotDisplaying: string[] = [];
   @Input() onCloseCompleteTask: { [taskName: string]: any | boolean } = {};
