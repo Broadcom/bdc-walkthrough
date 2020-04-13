@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Subscription} from 'rxjs';
-import {BdcWalkService} from '../bdc-walk.service';
+import {BdcDisplayEventAction, BdcWalkService} from '../bdc-walk.service';
 
 @Component({
   selector: 'bdc-walk-dialog',
@@ -55,6 +55,7 @@ export class BdcWalkDialogComponent implements AfterContentInit, OnDestroy, OnCh
   }
 
   close(setTasks: { [taskName: string]: any | boolean } = {}) {
+    this.tutorialService.logUserAction(this.name, BdcDisplayEventAction.UserClosed);
     this.tutorialService.setTaskCompleted(this.name);
     this.tutorialService.setTasks(setTasks);
   }

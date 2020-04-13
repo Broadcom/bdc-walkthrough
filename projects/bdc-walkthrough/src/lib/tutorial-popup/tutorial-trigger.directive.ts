@@ -4,7 +4,8 @@ import {
   ElementRef,
   HostListener,
   Inject,
-  Input, NgZone,
+  Input,
+  NgZone,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -23,7 +24,7 @@ import {
 } from '@angular/cdk/overlay';
 import {Subscription} from 'rxjs';
 import {BdcWalkPopupComponent} from './tutorial-popup.component';
-import {BdcWalkService} from '../bdc-walk.service';
+import {BdcDisplayEventAction, BdcWalkService} from '../bdc-walk.service';
 
 @Directive({
   selector: '[bdcWalkTriggerFor]'
@@ -130,6 +131,7 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   }
 
   close(buttonClicked: boolean) {
+    this.tutorialService.logUserAction(this.popup.name, buttonClicked ? BdcDisplayEventAction.ButtonClicked : BdcDisplayEventAction.UserClosed);
     this.tutorialService.setTaskCompleted(this.popup.name);
     this.tutorialService.setTasks(this.popup.onCloseCompleteTask);
 

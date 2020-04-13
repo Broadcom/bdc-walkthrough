@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import * as _ from 'lodash';
 
 @Injectable({
@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 })
 export class BdcWalkService {
   private _notify = new BehaviorSubject<void>(null);
+  private _notifyDisplaying = new Subject<BdcDisplayEvent>();
   private _values: {[id: string]: any | boolean};
   private _displaying: {[id: string]: boolean} = {};
   private _version = 1;
@@ -14,6 +15,7 @@ export class BdcWalkService {
   private _disabled = false;
 
   changes = this._notify.asObservable();
+  changesDisplaying = this._notifyDisplaying.asObservable();
 
   constructor() {
     this._values = JSON.parse(localStorage.getItem(this._key)) || {};
@@ -32,7 +34,12 @@ export class BdcWalkService {
     if (this._displaying[id] !== visible) {
       this._displaying[id] = visible;
       this._notify.next();
+      this._notifyDisplaying.next({id, visible, action: BdcDisplayEventAction.VisibilityChanged});
     }
+  }
+
+  logUserAction(id: string, action: BdcDisplayEventAction) {
+    this._notifyDisplaying.next({id, visible: false, action});
   }
 
   getTaskCompleted(id: string): any | boolean {
@@ -118,4 +125,16 @@ export class BdcWalkService {
     localStorage.setItem(this._key, JSON.stringify(this._values));
     this._notify.next();
   }
+}
+
+export interface BdcDisplayEvent {
+  id: string;
+  visible: boolean;
+  action: BdcDisplayEventAction;
+}
+
+export enum BdcDisplayEventAction {
+  VisibilityChanged,
+  UserClosed,
+  ButtonClicked
 }
