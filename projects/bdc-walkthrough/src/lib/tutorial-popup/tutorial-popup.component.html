@@ -3,9 +3,7 @@
     <div class="title">
       <div class="header">{{ header }}</div>
 
-      <a *ngIf="showCloseButton" (click)="$event.preventDefault(); trigger.close(false)" href="">
-        <img class="close" alt="Close" />
-      </a>
+      <a *ngIf="showCloseButton" (click)="$event.preventDefault(); trigger.close(false)" class="close" href=""></a>
     </div>
 
     <ng-content></ng-content>
