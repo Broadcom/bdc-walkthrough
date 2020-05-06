@@ -76,6 +76,7 @@ export class BdcWalkDialogComponent implements AfterContentInit, OnDestroy, OnCh
   private _sync() {
     if (this.name) {
       if (!this.tutorialService.getTaskCompleted(this.name) &&
+        !this.tutorialService.disabled &&
         this.tutorialService.evalMustCompleted(this.mustCompleted) &&
         this.tutorialService.evalMustNotDisplaying(this.mustNotDisplaying)) {
 

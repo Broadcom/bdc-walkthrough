@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 export class BdcWalkService {
   private _notify = new BehaviorSubject<void>(null);
   private _notifyDisplaying = new Subject<BdcDisplayEvent>();
-  private _values: {[id: string]: any | boolean};
+  private _values: TaskList;
   private _displaying: {[id: string]: boolean} = {};
   private _version = 1;
   private _key = 'bdcWalkthrough';
@@ -16,6 +16,10 @@ export class BdcWalkService {
 
   changes = this._notify.asObservable();
   changesDisplaying = this._notifyDisplaying.asObservable();
+
+  get disabled() {
+    return this._disabled;
+  }
 
   constructor() {
     this._values = JSON.parse(localStorage.getItem(this._key)) || {};
@@ -32,7 +36,12 @@ export class BdcWalkService {
 
   setIsDisplaying(id: string, visible: boolean) {
     if (this._displaying[id] !== visible) {
-      this._displaying[id] = visible;
+      if (visible) {
+        this._displaying[id] = visible;
+      } else {
+        delete this._displaying[id];
+      }
+
       this._notify.next();
       this._notifyDisplaying.next({id, visible, action: BdcDisplayEventAction.VisibilityChanged});
     }
@@ -46,17 +55,19 @@ export class BdcWalkService {
     return this._values[id] || false;
   }
 
-  setTaskCompleted(id: string, value: any | boolean = true) {
-    if (this._values[id] !== value && value) {
-      this._values[id] = value;
-      this.save();
-    } else if (this._values.hasOwnProperty(id) && !value) {
-      delete this._values[id];
-      this.save();
+  setTaskCompleted(id: string, value: any | boolean = true, mustCompleted?: TaskList) {
+    if (!mustCompleted || this.evalMustCompleted(mustCompleted)) {
+      if (this._values[id] !== value && value) {
+        this._values[id] = value;
+        this.save();
+      } else if (this._values.hasOwnProperty(id) && !value) {
+        delete this._values[id];
+        this.save();
+      }
     }
   }
 
-  setTasks(tasks: { [taskName: string]: any | boolean }) {
+  setTasks(tasks: TaskList) {
     let changed = false;
 
     Object.entries(tasks).forEach(([id, data]) => {
@@ -113,12 +124,14 @@ export class BdcWalkService {
     }
   }
 
-  evalMustCompleted(mustCompleted: { [taskName: string]: any | boolean }) {
-    return !this._disabled && Object.entries(mustCompleted).find(([name, value]) => !this._isCompleteMatch(name, value)) === undefined;
+  evalMustCompleted(mustCompleted: TaskList) {
+    return Object.entries(mustCompleted).find(([name, value]) => !this._isCompleteMatch(name, value)) === undefined;
   }
 
   evalMustNotDisplaying(mustNotDisplaying: string[]) {
-    return mustNotDisplaying.find(name => this.getIsDisplaying(name)) === undefined;
+    // allow using prefix in task names
+    const displaying = Object.keys(this._displaying);
+    return mustNotDisplaying.find(prefix => displaying.find(key => key.startsWith(prefix))) === undefined;
   }
 
   private save() {
@@ -126,6 +139,8 @@ export class BdcWalkService {
     this._notify.next();
   }
 }
+
+export interface TaskList { [taskName: string]: any | boolean; }
 
 export interface BdcDisplayEvent {
   id: string;
