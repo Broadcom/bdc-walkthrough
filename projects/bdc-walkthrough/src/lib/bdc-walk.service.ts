@@ -85,6 +85,10 @@ export class BdcWalkService {
     }
   }
 
+  getTasks() {
+    return this._values;
+  }
+
   reset(prefix?: string) {
     if (prefix) {
       // remove only keys prefixed with param
