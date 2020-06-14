@@ -34,6 +34,7 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   private _lastPosition: ConnectionPositionPair;
   private _initialized = false;
   private _timer: any;
+  private _contentInited = false;
 
   @Input('bdcWalkTriggerFor') popup: BdcWalkPopupComponent;
   @Input() enabled = true;
@@ -61,11 +62,14 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+    this._contentInited = true;
     this._componentSubscription = this.tutorialService.changes.subscribe(() => this._sync());
   }
 
   ngOnChanges(): void {
-    this._sync();
+    if (this._contentInited) {
+      this._sync();
+    }
   }
 
   ngOnDestroy() {
