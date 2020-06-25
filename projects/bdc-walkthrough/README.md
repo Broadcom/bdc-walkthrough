@@ -40,7 +40,7 @@ page are re-evaluated to appear or disappear according to their
 
 > Using the service is completely optional. You only need it to programmatically
 > access the state of tasks or if you want to develop new components
-> other than the available &lt;btc-walk-popup&gt; and &lt;btc-walk-dialog&gt;.
+> other than the available &lt;bdc-walk-popup&gt; and &lt;bdc-walk-dialog&gt;.
 
 ```typescript
 export class AppComponent implements OnInit {
@@ -109,6 +109,8 @@ Remember a task value can also be an object, not just a primitive.
 
 A task with a value can be evaluated both by its value or simply against `true`
 (a task with a value considered to be completed).
+You can also compare values that are not equal (!3), smaller (<3) or bigger (>3) than the
+specified value using [mustCompleted]="{next: '>2'}".
 
 You can also display a value of a task in a template using `getValue()` on the
 template reference.
@@ -192,6 +194,8 @@ There are some input properties that let you customize the popup visualization:
 * `showCloseButton` set either to display the popup close button (default: true).
 * `showButton` set either to display the "Got it" button on a popup (default: false).
 * `buttonText` set the text on the "Got it" button (default: Got it).
+* `sideNoteText` set the text for the side note near the button.
+* `class` set a css class to apply to the popup.
 
 #### Other popup behaviours:
 
