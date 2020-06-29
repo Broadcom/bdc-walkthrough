@@ -14,10 +14,10 @@
   "license": "MIT",
   "homepage": "https://github.com/Broadcom/bdc-walkthrough",
   "peerDependencies": {
-    "@angular/common": ">=8.0.0 <10.0.0",
-    "@angular/core": ">=8.0.0 <10.0.0",
-    "@angular/cdk": ">=8.0.0 <10.0.0",
-    "@angular/material": ">=8.0.0 <10.0.0",
+    "@angular/common": ">=8.0.0 <11.0.0",
+    "@angular/core": ">=8.0.0 <11.0.0",
+    "@angular/cdk": ">=8.0.0 <11.0.0",
+    "@angular/material": ">=8.0.0 <11.0.0",
     "lodash": "^4.17.15"
   }
 }
