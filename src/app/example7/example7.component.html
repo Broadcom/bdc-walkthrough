@@ -1,1 +1,15 @@
-<p>example7 works!</p>
+<h3>Migration</h3>
+<div>
+  Sometimes a flow of existing walk-through needs to be changed while some of the users already have an in-progress state.<br>
+  In this case you might need to change the existing user state in order to make it valid for the updated flow.<br><br>
+  When writing migration logic you create a new version for each migration.
+  You should never modify old migrations (that have been released), instead you create a new version that will run on top of it. The runtime will make sure to
+  run only the new migrations that are required for the existing state.<br><br>
+  Click > Inspect > Application > Local Storage then you should see the key bdcWalkthrough to see the state before migration,
+  then click the <b>Migrate</b> button. The <b>migrationVersion</b> value holds the latest migration that occurred.
+</div>
+
+<div class="stepBar">
+  <button (click)="migrate()" mat-stroked-button>Migrate</button>
+  <button (click)="reset()" mat-stroked-button>Reset</button>
+</div>

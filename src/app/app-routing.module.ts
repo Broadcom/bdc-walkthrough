@@ -6,6 +6,7 @@ import {Example3Component} from './example3/example3.component';
 import {Example4Component} from './example4/example4.component';
 import {Example5Component} from './example5/example5.component';
 import {Example6Component} from './example6/example6.component';
+import {Example7Component} from './example7/example7.component';
 
 const routes: Routes = [
   { path: 'example1', component: Example1Component },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'example4', component: Example4Component },
   { path: 'example5', component: Example5Component },
   { path: 'example6', component: Example6Component },
+  { path: 'example7', component: Example7Component },
   { path: '', redirectTo: '/example1', pathMatch: 'full' }
 ];
 
