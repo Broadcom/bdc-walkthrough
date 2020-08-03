@@ -30,6 +30,30 @@ export class BdcWalkService {
     }
   }
 
+  migrate(migrations: BdcWalkMigration[]) {
+    const version = this._values.migrationVersion || 0;
+
+    migrations.filter(migration => migration.version > version).forEach(migration => {
+      console.log(`Running bdc-migration version ${migration.version}`);
+
+      migration.operations.forEach(operation => {
+        if (this.evalMustCompleted(operation.condition)) {
+          Object.entries(operation.then).forEach(([id, data]) => {
+            if (data) {
+              this._values[id] = data;
+            } else {
+              delete this._values[id];
+            }
+          });
+        }
+      });
+
+      this._values.migrationVersion = migration.version;
+    });
+
+    this.save();
+  }
+
   getIsDisplaying(id: string): boolean {
     return this._displaying[id] || false;
   }
@@ -55,15 +79,13 @@ export class BdcWalkService {
     return this._values[id] || false;
   }
 
-  setTaskCompleted(id: string, value: any | boolean = true, mustCompleted?: TaskList) {
-    if (!mustCompleted || this.evalMustCompleted(mustCompleted)) {
-      if (this._values[id] !== value && value) {
-        this._values[id] = value;
-        this.save();
-      } else if (this._values.hasOwnProperty(id) && !value) {
-        delete this._values[id];
-        this.save();
-      }
+  setTaskCompleted(id: string, value: any | boolean = true) {
+    if (this._values[id] !== value && value) {
+      this._values[id] = value;
+      this.save();
+    } else if (this._values.hasOwnProperty(id) && !value) {
+      delete this._values[id];
+      this.save();
     }
   }
 
@@ -145,6 +167,14 @@ export class BdcWalkService {
 }
 
 export interface TaskList { [taskName: string]: any | boolean; }
+
+export interface BdcWalkMigration {
+  version: number;
+  operations: {
+    condition: TaskList,
+    then: TaskList
+  }[];
+}
 
 export interface BdcDisplayEvent {
   id: string;

@@ -18,6 +18,7 @@ import {FormsModule} from '@angular/forms';
 import { Example4Component } from './example4/example4.component';
 import { Example5Component } from './example5/example5.component';
 import { Example6Component } from './example6/example6.component';
+import { Example7Component } from './example7/example7.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Example6Component } from './example6/example6.component';
     Example3Component,
     Example4Component,
     Example5Component,
-    Example6Component
+    Example6Component,
+    Example7Component
   ],
   imports: [
     BrowserModule,
