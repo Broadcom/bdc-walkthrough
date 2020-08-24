@@ -51,6 +51,9 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   }
 
   ngOnInit() {
+    if (!this.popup || !this.popup.menu) {
+      return;
+    }
     // overrides
     this['_setPosition'] = this.__setPosition;
     this['_getOverlayConfig'] = this.__getOverlayConfig;
