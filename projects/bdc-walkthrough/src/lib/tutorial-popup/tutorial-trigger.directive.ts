@@ -11,9 +11,9 @@ import {
   OnInit,
   ViewContainerRef
 } from '@angular/core';
-import {MAT_MENU_SCROLL_STRATEGY, MatMenuTrigger} from '@angular/material/menu';
-import {FocusMonitor} from '@angular/cdk/a11y';
-import {Directionality} from '@angular/cdk/bidi';
+import { MAT_MENU_SCROLL_STRATEGY, MatMenuTrigger } from '@angular/material/menu';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Directionality } from '@angular/cdk/bidi';
 import {
   ConnectionPositionPair,
   FlexibleConnectedPositionStrategy,
@@ -22,9 +22,9 @@ import {
   OverlayConfig,
   VerticalConnectionPos
 } from '@angular/cdk/overlay';
-import {Subscription} from 'rxjs';
-import {BdcWalkPopupComponent} from './tutorial-popup.component';
-import {BdcDisplayEventAction, BdcWalkService} from '../bdc-walk.service';
+import { Subscription } from 'rxjs';
+import { BdcWalkPopupComponent } from './tutorial-popup.component';
+import { BdcDisplayEventAction, BdcWalkService } from '../bdc-walk.service';
 
 @Directive({
   selector: '[bdcWalkTriggerFor]'
@@ -34,45 +34,54 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   private _lastPosition: ConnectionPositionPair;
   private _initialized = false;
   private _timer: any;
-  private _contentInited = false;
+  private _contentInitialized = false;
 
   @Input('bdcWalkTriggerFor') popup: BdcWalkPopupComponent;
   @Input() enabled = true;
   @Input() mustCompleted: { [taskName: string]: any | boolean } = {};
   @Input() data: any;
 
-  constructor(private ngZone: NgZone,
-              private tutorialService: BdcWalkService,
-              private __overlay: Overlay, private __elementRef: ElementRef<HTMLElement>, private __dir: Directionality,
-              __viewContainerRef: ViewContainerRef, __focusMonitor: FocusMonitor,
-              @Inject(MAT_MENU_SCROLL_STRATEGY) private __scrollStrategy) {
+  constructor(
+    private ngZone: NgZone,
+    private tutorialService: BdcWalkService,
+    private __overlay: Overlay,
+    private __elementRef: ElementRef<HTMLElement>,
+    private __dir: Directionality,
+    __viewContainerRef: ViewContainerRef,
+    __focusMonitor: FocusMonitor,
+    @Inject(MAT_MENU_SCROLL_STRATEGY) private __scrollStrategy
+  ) {
 
     super(__overlay, __elementRef, __viewContainerRef, __scrollStrategy, null, null, __dir, __focusMonitor);
   }
 
   ngOnInit() {
-    if (!this.popup || !this.popup.menu) {
-      return;
-    }
+    // if (!this.popup || !this.popup.menu) {
+    //   return;
+    // }
     // overrides
     this['_setPosition'] = this.__setPosition;
     this['_getOverlayConfig'] = this.__getOverlayConfig;
-    this['_handleClick'] = () => {};
+    this['_handleClick'] = () => { };
 
     this.menu = this.popup.menu;
     this.restoreFocus = false;
   }
 
   ngAfterContentInit() {
+    // if (!this.popup || !this.popup.menu) {
+    //   return;
+    // }
     super.ngAfterContentInit();
-    this._contentInited = true;
+    this._contentInitialized = true;
     this._componentSubscription = this.tutorialService.changes.subscribe(() => this._sync());
   }
 
   ngOnChanges(): void {
-    if (this._contentInited) {
-      this._sync();
-    }
+    // if (!this._contentInitialized) {
+    //   return;
+    // }
+    this._sync();
   }
 
   ngOnDestroy() {
@@ -172,7 +181,7 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
         this._lastPosition.originY !== position.connectionPair.originY) {
         // selected position changed, we must run detect changes to update arrow css
         this._lastPosition = position.connectionPair;
-        this.ngZone.run(() => setTimeout(() => {}));
+        this.ngZone.run(() => setTimeout(() => { }));
       }
     }));
 
@@ -208,10 +217,10 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
       originFallbackY = overlayFallbackY === 'top' ? 'bottom' : 'top';
     }
 
-    const original = {originX, originY, overlayX, overlayY, offsetX, offsetY};
-    const flipX = {originX: originFallbackX, originY, overlayX: overlayFallbackX, overlayY, offsetX: -offsetX, offsetY};
-    const flipY = {originX, originY: originFallbackY, overlayX, overlayY: overlayFallbackY, offsetX, offsetY: -offsetY};
-    const flipXY = {originX: originFallbackX, originY: originFallbackY, overlayX: overlayFallbackX, overlayY: overlayFallbackY, offsetX: -offsetX, offsetY: -offsetY}
+    const original = { originX, originY, overlayX, overlayY, offsetX, offsetY };
+    const flipX = { originX: originFallbackX, originY, overlayX: overlayFallbackX, overlayY, offsetX: -offsetX, offsetY };
+    const flipY = { originX, originY: originFallbackY, overlayX, overlayY: overlayFallbackY, offsetX, offsetY: -offsetY };
+    const flipXY = { originX: originFallbackX, originY: originFallbackY, overlayX: overlayFallbackX, overlayY: overlayFallbackY, offsetX: -offsetX, offsetY: -offsetY }
 
     positionStrategy.withPositions(this.popup.horizontal ? [original, flipX] : [original, flipY, flipXY]);
   }
