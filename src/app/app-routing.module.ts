@@ -1,12 +1,12 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
-import {Example1Component} from './example1/example1.component';
-import {Example2Component} from './example2/example2.component';
-import {Example3Component} from './example3/example3.component';
-import {Example4Component} from './example4/example4.component';
-import {Example5Component} from './example5/example5.component';
-import {Example6Component} from './example6/example6.component';
-import {Example7Component} from './example7/example7.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Example1Component } from './example1/example1.component';
+import { Example2Component } from './example2/example2.component';
+import { Example3Component } from './example3/example3.component';
+import { Example4Component } from './example4/example4.component';
+import { Example5Component } from './example5/example5.component';
+import { Example6Component } from './example6/example6.component';
+import { Example7Component } from './example7/example7.component';
 
 const routes: Routes = [
   { path: 'example1', component: Example1Component },

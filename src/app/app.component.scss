@@ -6,7 +6,7 @@ header {
 }
 
 nav {
-  background-color: #213c60;;
+  background-color: #213c60;
   color: white;
 
   > div {
@@ -26,7 +26,7 @@ nav {
       &.active {
         font-weight: bold;
         border-top: 4px solid transparent;
-        border-bottom: 4px solid #F7BF19;
+        border-bottom: 4px solid #f7bf19;
       }
 
       &:hover {
@@ -34,7 +34,6 @@ nav {
       }
     }
   }
-
 }
 
 main {

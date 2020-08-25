@@ -141,7 +141,7 @@
               "tsConfig": "projects/bdc-walkthrough/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -163,6 +163,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bdc-walkthrough-demo"
+    }
+  },
+  "defaultProject": "bdc-walkthrough-demo",
+  "cli": {
+    "analytics": false
+  }
 }
