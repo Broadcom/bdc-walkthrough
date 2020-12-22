@@ -108,7 +108,7 @@ export class BdcWalkService {
   }
 
   getTasks() {
-    return this._values;
+    return {...this._values};
   }
 
   reset(prefix?: string) {
