@@ -3,6 +3,8 @@
 An Angular Material library for displaying walk-through pop-ups and
 dialogs using a declarative way.
 
+by Amir Leshem (Broadcom)
+
 ### [Show Demo](https://stackblitz.com/edit/angular-bdc-walkthrough)
 
 ![bdc-walkthrough](screenshot.png)
@@ -257,3 +259,7 @@ Dialog behaviours:
 Methods:
 * `getValue(taskName: string)` returns the value of a task.
 * `close(setTasks?: { [taskName: string]: any | boolean })` closes the dialog by completing its task, and optionally set additional tasks.
+
+## Building source code and running the demo
+Download the source code from github https://github.com/Broadcom/bdc-walkthrough.
+Then run `npm i` to install dependencies, `npm run build:lib` to build the bdc-walkthrough library, and finally `npm run start` to run the demo.
