@@ -11,14 +11,17 @@ by Amir Leshem (Broadcom)
 
 ## Prerequisites
 
-This library is compatible with Angular 14 + Material 14 and higher.<br>
+This library is compatible with Angular/Material 8.0 and higher.<br>
 Please install the version of bdc-walkthrough according to this table:
 
-| version |  Angular   |  Material  |
-|---------|:----------:|:----------:|
-| 1.2.1   |    15.0    |    15.0    |
-| 1.2.0   |    14.0    |    14.0    |
-| 1.1.1   | 8.0 - 13.0 | 8.0 - 13.0 |
+| version |   Angular   |  Material   |
+|---------|:-----------:|:-----------:|
+| 1.2.x   | 14.0 - 15.0 | 14.0 - 15.0 |
+| 1.1.1   | 8.0 - 13.0  | 8.0 - 13.0  |
+
+Important Note: When using Material 15.x this library will use the new MDC-based Angular Material Components.
+This might lead to inconsistent style usage if the rest of your app is using the legacy (non-MDC) componenets.
+For more info please check https://material.angular.io/guide/mdc-migration
 
 1. Install Angular Material:
     ```
@@ -58,8 +61,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // make sure to unsubscribe on ngDestroy
     this.bdcWalkService.changes.subscribe(() => {
-        // get the value of a task
-        const taskCompleted = this.bdcWalkService.getTaskCompleted('taskCreateApp');
+      // get the value of a task
+      const taskCompleted = this.bdcWalkService.getTaskCompleted('taskCreateApp');
     });
   }
 
@@ -86,7 +89,7 @@ completed and it won't show up again.
 
 ```angular2html
 <bdc-walk-popup #taskDeleteApp name="taskDeleteApp"
-  [mustCompleted]="{taskCreateApp: true}">
+                [mustCompleted]="{taskCreateApp: true}">
   Click to delete the App
 </bdc-walk-popup>
 ```
@@ -125,12 +128,12 @@ template reference.
 
 ```angular2html
 <bdc-walk-popup #taskCreateApp name="taskCreateApp"
-  [onCloseCompleteTask]="{taskCreateApp: {id: 1, name: 'amazing app'}}">
+                [onCloseCompleteTask]="{taskCreateApp: {id: 1, name: 'amazing app'}}">
   Click to create the App
 </bdc-walk-popup>
 
 <bdc-walk-popup #taskDeleteApp name="taskDeleteApp"
-  [mustCompleted]="{taskCreateApp: true}">
+                [mustCompleted]="{taskCreateApp: true}">
   Click to delete the App {{taskDeleteApp.getValue('taskCreateApp').name }}
 </bdc-walk-popup>
 ```
