@@ -14,10 +14,11 @@ by Amir Leshem (Broadcom)
 This library is compatible with Angular 14 + Material 14 and higher.<br>
 Please install the version of bdc-walkthrough according to this table:
 
-| version  |    Angular    | Material |
-|----------|:-------------:|---------:|
-| 1.2      |      14       |       14 |
-| 1.2.1    |      15       |       15 |
+| version |  Angular   |  Material  |
+|---------|:----------:|:----------:|
+| 1.2.1   |    15.0    |    15.0    |
+| 1.2.0   |    14.0    |    14.0    |
+| 1.1.1   | 8.0 - 13.0 | 8.0 - 13.0 |
 
 1. Install Angular Material:
     ```
