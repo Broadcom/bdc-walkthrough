@@ -3,14 +3,21 @@
 An Angular Material library for displaying walk-through pop-ups and
 dialogs using a declarative way.
 
+by Amir Leshem (Broadcom)
+
 ### [Show Demo](https://stackblitz.com/edit/angular-bdc-walkthrough)
 
 ![bdc-walkthrough](screenshot.png)
 
 ## Prerequisites
 
-This library is compatible with Angular 8.x and 9.x using Material 8.x and 9.x
-with Ivy enabled or disabled.
+This library is compatible with Angular 14 + Material 14 and higher.<br>
+Please install the version of bdc-walkthrough according to this table:
+
+| version  |    Angular    | Material |
+|----------|:-------------:|---------:|
+| 1.2      |      14       |       14 |
+| 1.2.1    |      15       |       15 |
 
 1. Install Angular Material:
     ```
@@ -161,7 +168,7 @@ suggest the user to search for it.
 
 It's more declarative to prevent the search suggestion
 popup from displaying in case taskClickSite popup appears, rather than
-writing code that will check if the created site ID is found in the sites array. 
+writing code that will check if the created site ID is found in the sites array.
 
 ```angular2html
 <input [bdcWalkTriggerFor]="taskSearchCreatedSite" (change)="search($event.value)">
@@ -225,7 +232,7 @@ See examples of &lt;bdc-walk-popup&gt; above.
 #### Behaviours:
 * `bdcWalkTriggerFor` set a reference to the popup instance using a hashtag template variable.
 * `enabled` set a boolean expression to determine if the popup should be enabled (default: true).
-* `mustCompleted` set a dictionary object of tasks to evaluate. Completed task values can evaluate against a partial object value or just true. This is exactly the same as defining `mustCompleted` on the popup instance but is useful for cases you iterate on a list with *ngFor and need to compare from values of the iteration.  
+* `mustCompleted` set a dictionary object of tasks to evaluate. Completed task values can evaluate against a partial object value or just true. This is exactly the same as defining `mustCompleted` on the popup instance but is useful for cases you iterate on a list with *ngFor and need to compare from values of the iteration.
 * `data` set a context object that the popup instance template can then consume using `<ng-template let-value>`.
 
 ### &lt;bdc-walk-dialog&gt;
@@ -257,3 +264,7 @@ Dialog behaviours:
 Methods:
 * `getValue(taskName: string)` returns the value of a task.
 * `close(setTasks?: { [taskName: string]: any | boolean })` closes the dialog by completing its task, and optionally set additional tasks.
+
+## Building source code and running the demo
+Download the source code from github https://github.com/Broadcom/bdc-walkthrough.
+Then run `npm i` to install dependencies, `npm run build:lib` to build the bdc-walkthrough library, and finally `npm run start` to run the demo.
