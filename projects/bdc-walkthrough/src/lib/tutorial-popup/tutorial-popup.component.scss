@@ -6,7 +6,7 @@ $background-color: #FFFFFF;
 $disabled-color: #B1BCC7;
 
 // popup
-div.mat-menu-panel.bdc-walk-popup {
+div.mat-mdc-menu-panel.bdc-walk-popup {
   min-height: auto;
   border: 1px solid $border-color;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
@@ -17,6 +17,8 @@ div.mat-menu-panel.bdc-walk-popup {
   .container {
     padding: 10px 18px 16px;
     outline: none;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .title {
@@ -63,7 +65,7 @@ div.mat-menu-panel.bdc-walk-popup {
     box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
   }
 
-  .mat-menu-content {
+  .mat-mdc-menu-content {
     border-radius: $container-border-radius;
     height: 100%;
     padding: 0;
