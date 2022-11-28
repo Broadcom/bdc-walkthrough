@@ -1,6 +1,6 @@
 {
   "name": "bdc-walkthrough",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "An Angular Material library for displaying walk-through pop-ups and dialogs using a declarative way",
   "author": "Amir Leshem",
   "repository": {
@@ -14,10 +14,10 @@
   "license": "MIT",
   "homepage": "https://github.com/Broadcom/bdc-walkthrough",
   "peerDependencies": {
-    "@angular/common": ">=15.0.0 <18.0.0",
-    "@angular/core": ">=15.0.0 <18.0.0",
-    "@angular/cdk": ">=15.0.0 <18.0.0",
-    "@angular/material": ">=15.0.0 <18.0.0",
+    "@angular/common": ">=14.0.0 <18.0.0",
+    "@angular/core": ">=14.0.0 <18.0.0",
+    "@angular/cdk": ">=14.0.0 <18.0.0",
+    "@angular/material": ">=14.0.0 <18.0.0",
     "lodash": "^4.17.21"
   },
   "dependencies": {
