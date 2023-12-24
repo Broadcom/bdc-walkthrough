@@ -28,7 +28,7 @@ import {
 } from '@angular/core';
 import {merge, Observable, of as observableOf, Subscription} from 'rxjs';
 import {delay, filter, take, takeUntil} from 'rxjs/operators';
-import {_MatMenuBase, MAT_MENU_SCROLL_STRATEGY, MatMenuPanel, MenuPositionX, MenuPositionY} from '@angular/material/menu';
+import {MatMenu, MAT_MENU_SCROLL_STRATEGY, MatMenuPanel, MenuPositionX, MenuPositionY} from '@angular/material/menu';
 import {BdcWalkPopupComponent} from './tutorial-popup.component';
 import {BdcDisplayEventAction, BdcWalkService} from '../bdc-walk.service';
 
@@ -169,7 +169,7 @@ export class BdcWalkTriggerDirective implements OnDestroy, OnChanges, AfterConte
     this._closingActionsSubscription = this._menuClosingActions().subscribe(() => this.closeMenu());
     this._initMenu(menu);
 
-    if (menu instanceof _MatMenuBase) {
+    if (menu instanceof MatMenu) {
       menu._startAnimation();
       menu._directDescendantItems.changes.pipe(takeUntil(menu.close)).subscribe(() => {
         // Re-adjust the position without locking when the amount of items
@@ -202,7 +202,7 @@ export class BdcWalkTriggerDirective implements OnDestroy, OnChanges, AfterConte
     this._closingActionsSubscription.unsubscribe();
     this._overlayRef.detach();
 
-    if (menu instanceof _MatMenuBase) {
+    if (menu instanceof MatMenu) {
       menu._resetAnimation();
 
       if (menu.lazyContent) {
