@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BdcWalkService} from 'bdc-walkthrough';
+import { BdcWalkService } from 'bdc-walkthrough';
 
 @Component({
   selector: 'bdc-example7',

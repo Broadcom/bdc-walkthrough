@@ -1,24 +1,16 @@
-import {
-  Component,
-  ContentChild,
-  EventEmitter, HostBinding,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
-import {MatMenu, MenuPositionX, MenuPositionY} from '@angular/material/menu';
-import {BdcWalkService} from '../bdc-walk.service';
-import {BdcWalkTriggerDirective} from './tutorial-trigger.directive';
+import { Component, ContentChild, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatMenu, MenuPositionX, MenuPositionY } from '@angular/material/menu';
+import { BdcWalkService } from '../bdc-walk.service';
+import { BdcWalkTriggerDirective } from './tutorial-trigger.directive';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'bdc-walk-popup',
-  templateUrl: './tutorial-popup.component.html',
-  styleUrls: ['./tutorial-popup.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'bdc-walk-popup',
+    templateUrl: './tutorial-popup.component.html',
+    styleUrls: ['./tutorial-popup.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    imports: [MatMenu, NgIf, NgTemplateOutlet, MatButton]
 })
 export class BdcWalkPopupComponent implements OnInit, OnChanges {
   @Input() name: string;

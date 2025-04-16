@@ -1,11 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BdcWalkService} from 'bdc-walkthrough';
-import {Subscription} from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BdcWalkPopupComponent, BdcWalkService, BdcWalkTriggerDirective } from 'bdc-walkthrough';
+import { Subscription } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { BdcWalkDialogComponent } from '../../../projects/bdc-walkthrough/src/lib/tutorial-dialog/tutorial-dialog.component';
+import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'bdc-example6',
   templateUrl: './example6.component.html',
-  styleUrls: ['./example6.component.scss']
+  styleUrls: ['./example6.component.scss'],
+  imports: [BdcWalkTriggerDirective, BdcWalkPopupComponent, BdcWalkDialogComponent, MatIcon, MatIconButton, MatButtonModule, NgIf, NgForOf]
 })
 export class Example6Component implements OnInit, OnDestroy {
   id = 'example6showWalkthrough';
