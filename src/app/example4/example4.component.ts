@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {BdcWalkService} from 'bdc-walkthrough';
+import { BdcWalkPopupComponent, BdcWalkService, BdcWalkTriggerDirective } from 'bdc-walkthrough';
+import { MatFormField, MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'bdc-example4',
   templateUrl: './example4.component.html',
-  styleUrls: ['./example4.component.scss']
+  styleUrls: ['./example4.component.scss'],
+  imports: [BdcWalkTriggerDirective, BdcWalkPopupComponent, MatFormField, MatInput, MatButtonModule, FormsModule, NgForOf]
 })
 export class Example4Component implements OnInit {
   input = '';

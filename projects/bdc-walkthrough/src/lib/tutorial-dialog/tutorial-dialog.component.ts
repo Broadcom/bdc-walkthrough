@@ -1,23 +1,13 @@
-import {
-  AfterContentInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Output,
-  TemplateRef,
-  ViewChild, ViewEncapsulation
-} from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {Subscription} from 'rxjs';
-import {BdcDisplayEventAction, BdcWalkService} from '../bdc-walk.service';
+import { AfterContentInit, Component, EventEmitter, Input, OnChanges, OnDestroy, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { BdcDisplayEventAction, BdcWalkService } from '../bdc-walk.service';
 
 @Component({
-  selector: 'bdc-walk-dialog',
-  templateUrl: './tutorial-dialog.component.html',
-  styleUrls: ['./tutorial-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'bdc-walk-dialog',
+    templateUrl: './tutorial-dialog.component.html',
+    styleUrls: ['./tutorial-dialog.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class BdcWalkDialogComponent implements AfterContentInit, OnDestroy, OnChanges {
   @Input() name: string;

@@ -1,40 +1,14 @@
-import {Direction, Directionality} from '@angular/cdk/bidi';
-import {
-  ConnectionPositionPair,
-  FlexibleConnectedPositionStrategy,
-  HorizontalConnectionPos,
-  Overlay,
-  OverlayConfig,
-  OverlayRef,
-  ScrollStrategy,
-  VerticalConnectionPos,
-} from '@angular/cdk/overlay';
-import {TemplatePortal} from '@angular/cdk/portal';
-import {
-  AfterContentChecked,
-  AfterContentInit,
-  Directive,
-  ElementRef,
-  EventEmitter, HostListener,
-  Inject,
-  InjectionToken,
-  Input,
-  NgZone, OnChanges,
-  OnDestroy,
-  Optional,
-  Output,
-  Self,
-  ViewContainerRef,
-} from '@angular/core';
-import {merge, Observable, of as observableOf, Subscription} from 'rxjs';
-import {delay, filter, take, takeUntil} from 'rxjs/operators';
-import {MatMenu, MAT_MENU_SCROLL_STRATEGY, MatMenuPanel, MenuPositionX, MenuPositionY} from '@angular/material/menu';
-import {BdcWalkPopupComponent} from './tutorial-popup.component';
-import {BdcDisplayEventAction, BdcWalkService} from '../bdc-walk.service';
+import { Direction, Directionality } from '@angular/cdk/bidi';
+import { ConnectionPositionPair, FlexibleConnectedPositionStrategy, HorizontalConnectionPos, Overlay, OverlayConfig, OverlayRef, ScrollStrategy, VerticalConnectionPos, } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { AfterContentChecked, AfterContentInit, Directive, ElementRef, HostListener, Inject, Input, NgZone, OnChanges, OnDestroy, Optional, ViewContainerRef, } from '@angular/core';
+import { merge, Observable, of as observableOf, Subscription } from 'rxjs';
+import { filter, take, takeUntil } from 'rxjs/operators';
+import { MAT_MENU_SCROLL_STRATEGY, MatMenu, MatMenuPanel, MenuPositionX, MenuPositionY } from '@angular/material/menu';
+import { BdcWalkPopupComponent } from './tutorial-popup.component';
+import { BdcDisplayEventAction, BdcWalkService } from '../bdc-walk.service';
 
-@Directive({
-  selector: '[bdcWalkTriggerFor]'
-})
+@Directive({ selector: '[bdcWalkTriggerFor]' })
 export class BdcWalkTriggerDirective implements OnDestroy, OnChanges, AfterContentInit, AfterContentChecked {
   private _portal: TemplatePortal;
   private _overlayRef: OverlayRef | null = null;
@@ -170,7 +144,7 @@ export class BdcWalkTriggerDirective implements OnDestroy, OnChanges, AfterConte
     this._initMenu(menu);
 
     if (menu instanceof MatMenu) {
-      menu._startAnimation();
+      menu._setIsOpen(true);
       menu._directDescendantItems.changes.pipe(takeUntil(menu.close)).subscribe(() => {
         // Re-adjust the position without locking when the amount of items
         // changes so that the overlay is allowed to pick a new optimal position.
@@ -203,13 +177,15 @@ export class BdcWalkTriggerDirective implements OnDestroy, OnChanges, AfterConte
     this._overlayRef.detach();
 
     if (menu instanceof MatMenu) {
-      menu._resetAnimation();
+      menu._setIsOpen(false);
 
       if (menu.lazyContent) {
         // Wait for the exit animation to finish before detaching the content.
         menu._animationDone
           .pipe(
-            filter(event => event.toState === 'void'),
+            filter(event => {
+              return event === 'void';
+            }),
             take(1),
             // Interrupt if the content got re-attached.
             takeUntil(menu.lazyContent._attached),
